@@ -39,6 +39,8 @@ class VK:
         Banners.start_banner(self, version=self.version, os=self.os, login=self.login, password=self.password, album_id=self.album_id, group_id=self.group_id)
         system_python_version = sys.version[:3]
         start_or_settings = input(':')
+        os.system('cls')
+        os.system('clear')
         if start_or_settings == 'start':
             if self.python_version > system_python_version:
                 print(Fore.RED)
@@ -49,6 +51,8 @@ class VK:
             if self.group_id != None and self.album_id != None and self.upload_limit != None and self.folder_with_photos != None and self.autoupdate != None and self.login != None and self.password != None and self.version != None and self.python_version != None:
                 print('Программа готова к запуску. Начать атаку? Y/N')
                 start_program = input(':')
+                os.system('cls')
+                os.system('clear')
                 if start_program == 'Y' or 'y':
                     os.system('cls')
                     os.system('clear')
@@ -73,6 +77,13 @@ class VK:
 
     # Функция, которая загружает фото в альбом
     def upload(self, vk_session, group_id, album_id, photos):
+        print("""
+┏━━━┓┏┓     ┏┓
+┃┏━┓┣┛┗┓   ┏┛┗┓
+┃┗━━╋┓┏╋━━┳┻┓┏┛
+┗━━┓┃┃┃┃┏┓┃┏┫┃
+┃┗━┛┃┃┗┫┏┓┃┃┃┗┓
+┗━━━┛┗━┻┛┗┻┛┗━┛.....""")
         upload = vk_api.VkUpload(vk_session)
         cycle = 1
         files = self.folder_with_photos
@@ -122,10 +133,6 @@ class VK:
                 except:
                     print(f'{Fore.RED}Фото загрузить не удалось! Перезапуск программы...')
                     self.main()
-
-    def settings(self):
-        Banners.settings_banner(self)
-
 
 vk = VK()
 print(vk.main())
