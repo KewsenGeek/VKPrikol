@@ -12,12 +12,12 @@ message = "\033[94m \n -|| Проверка запуска ||- \033[0m"
 # Основной класс
 class Banners:
     # Баннер, который отображается при запуске программы
-    def start_banner(self, version, os):
+    def start_banner(self, version, os, login, password, album_id, group_id):
         for char in message:
             sys.stdout.write(char)
             sys.stdout.flush()
             time.sleep(0.1)
-        Banners.check_files(self)
+        Banners.check_files(self, login, password, album_id, group_id)
         print(Fore.BLUE)
         Banners.vkprikol_banner(self)
         print(Fore.GREEN)
@@ -63,10 +63,10 @@ class Banners:
                                 \_/  |_|\_\_|   |_|  |_|_|\_\___/|_|""")
 
 
-    def check_files(self):
+    def check_files(self, login, password, album_id, group_id):
         green = Fore.GREEN
         red = Fore.RED
-        successful = f'{Fore.GREEN}--|| Запуск Успешный  ||--'
+        successful = f'{Fore.GREEN}--|| Запуск Успешный ||--'
         if os.path.exists('config.ini') == True:
             print('''
                     ''')
@@ -75,6 +75,32 @@ class Banners:
                 sys.stdout.write(char)
                 sys.stdout.flush()
                 time.sleep(0.1)
+            print("")
+            time.sleep(2.5)
+            if login != None:
+                print(f'{red}.login' + f'{green} - [OK]')
+                time.sleep(1)
+            else:
+                print(f'{red}.login' + f'{red} - [FAIL]')
+                exit()
+            if password != None:
+                print(f'{red}.password' + f'{green} - [OK]')
+                time.sleep(1)
+            else:
+                print(f'{red}.password' + f'{red} - [FAIL]')
+                exit()
+            if group_id != None:
+                print(f'{red}.groupID' + f'{green} - [OK]')
+                time.sleep(1)
+            else:
+                print(f'{red}.groupID' + f'{red} - [FAIL]')
+                exit()
+            if album_id != None:
+                print(f'{red}.albumID' + f'{green} - [OK]')
+                time.sleep(1)
+            else:
+                print(f'{red}.albumID' + f'{red} - [FAIL]')
+                exit()
         else:
             print('''
                                 ''')

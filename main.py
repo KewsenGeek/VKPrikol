@@ -36,7 +36,7 @@ class VK:
         os.system('cls')
         os.system('clear')
         Banners.vkprikol_banner(self)
-        Banners.start_banner(self, version=self.version, os=self.os)
+        Banners.start_banner(self, version=self.version, os=self.os, login=self.login, password=self.password, album_id=self.album_id, group_id=self.group_id)
         system_python_version = sys.version[:3]
         start_or_settings = input(':')
         if start_or_settings == 'start':
